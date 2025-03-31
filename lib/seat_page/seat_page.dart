@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 
-class SeatPage extends StatelessWidget {
+class SeatPage extends StatefulWidget {
   String start;
   String end;
 
   SeatPage({required this.start,required this.end});
+
+  @override
+  State<SeatPage> createState() => _SeatPageState();
+}
+
+class _SeatPageState extends State<SeatPage> {
+  
+  
 
 
   @override
@@ -23,9 +31,9 @@ class SeatPage extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(start),
+              Text(widget.start),
               Icon(Icons.arrow_right_alt_rounded),
-              Text(end)
+              Text(widget.end)
             ],
           ),
           Row(
@@ -68,73 +76,84 @@ class SeatPage extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-              seat(),
-              seat(),
-              seat(),
-              seat(),
-              seat(),
-              seat(),
-              seat(),
-              seat(),
-              seat(),
-              seat(),
-              seat(),
-              seat(),
-              seat(),
-              seat(),
-              seat(),
-              seat(),
-              seat(),
-              seat(),
-              seat(),
-              seat(),]),
+              seatrow(1),
+              SizedBox(height: 10),
+              seatrow(2),
+              SizedBox(height: 10),
+              seatrow(3),
+              SizedBox(height: 10),
+              seatrow(4),
+              SizedBox(height: 10),
+              seatrow(5),
+              SizedBox(height: 10),
+              seatrow(6),
+              SizedBox(height: 10),
+              seatrow(7),
+              SizedBox(height: 10),
+              seatrow(8),
+              SizedBox(height: 10),
+              seatrow(9),
+              SizedBox(height: 10),
+              seatrow(10),
+              SizedBox(height: 10),
+              seatrow(11),
+              SizedBox(height: 10),
+              seatrow(12),
+              SizedBox(height: 10),
+              seatrow(13),
+              SizedBox(height: 10),
+              seatrow(14),
+              SizedBox(height: 10),
+              seatrow(15),
+              SizedBox(height: 10),
+              seatrow(16),
+              SizedBox(height: 10),
+              seatrow(17),
+              SizedBox(height: 10),
+              seatrow(18),
+              SizedBox(height: 10),
+              seatrow(19),
+              SizedBox(height: 10),
+              seatrow(20),
+              ]),
             ),
           ),
+          
           ElevatedButton(onPressed: () {}, child: Text('예매 하기'))
         ],
       ),
     );
   }
-}
 
-Widget seat() {
-  return Padding(
-    padding: const EdgeInsets.all(5.0),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          width: 50,
-          height: 50,
+  Widget seatrow(int rowNum) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Row(
+            children: [
+              seat(),
+              seat(),
+              Expanded(child: Center(child: Text('$rowNum'))),
+              seat(),
+              seat(),
+            ],
+          ),
+    );
+  }
+
+
+Widget seat() {  
+  return Expanded(
+    child: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 2),
+      child: AspectRatio(
+        aspectRatio: 1,
+        child: Container(
+          
           decoration: BoxDecoration(color: Colors.grey,
           borderRadius: BorderRadius.circular(10)),
         ),
-        SizedBox(width: 5),
-        Container(
-          width: 50,
-          height: 50,
-          decoration: BoxDecoration(color: Colors.grey,
-          borderRadius: BorderRadius.circular(10)),
-        ),
-        Container(        
-          width: 50,
-          height: 50,
-          child: Center(child: Text('1')),
-        ),
-        Container(
-          width: 50,
-          height: 50,
-          decoration: BoxDecoration(color: Colors.grey,
-          borderRadius: BorderRadius.circular(10)),
-        ),
-        SizedBox(width: 5),
-        Container(
-          width: 50,
-          height: 50,
-          decoration: BoxDecoration(color: Colors.grey,
-          borderRadius: BorderRadius.circular(10)),
-        ),
-      ],
+      ),
     ),
   );
+}
 }
