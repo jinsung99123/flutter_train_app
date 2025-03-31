@@ -17,7 +17,16 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget{
+class HomePage extends StatefulWidget{
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  String startStation = '선택';
+  String endStation='선택';
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,29 +56,45 @@ class HomePage extends StatelessWidget{
                                        
                         children: [     
                           GestureDetector(
-                            onTap: (){Navigator.push(
-                              context, MaterialPageRoute(builder: (context)=> StationListPage() 
-                              ),
-                            );},
+                            onTap: () async {
+                              String selectStation = await Navigator.push(context,
+                              MaterialPageRoute(builder: (context)=>StationListPage()));
+
+                              if (selectStation !=null) {setState((){
+                                startStation=selectStation;
+                              });}
+                            },
                                          
                           child: Column(                          
                             children: [
                               Text('출발역'),
-                              Text('수서',style: TextStyle(fontSize: 30))                                         
+                              Text(startStation,style: TextStyle(fontSize: 30))                                         
                             ],                  
                           ),
                           ),
+
                           Container(
                             height: 50,
                             width: 150,
                             child: VerticalDivider(color: Colors.red,thickness: 2),
                           ),
                           
-                          Column(
-                            children: [
-                              Text('도착역'),
-                              Text('부산',style: TextStyle(fontSize: 30),)                                         
-                            ],),
+                          GestureDetector(
+                            onTap: () async {
+                              String selectEndStation = await Navigator.push(context,
+                              MaterialPageRoute(builder: (context)=>StationListPage()));
+
+                              if (selectEndStation!=null) {setState(() {
+                                endStation=selectEndStation;
+                              });}
+
+                            },
+                            child: Column(
+                              children: [
+                                Text('도착역'),
+                                Text(endStation,style: TextStyle(fontSize: 30),)                                         
+                              ],),
+                          ),
                         ],
                       ),
                     ],

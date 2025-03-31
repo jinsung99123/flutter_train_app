@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class StationListPage extends StatelessWidget {
+  List<String> station = ['수서','동탄','평택지제','천안아산','오송','대전','김천구미','동대구','경주','울산'];
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,57 +13,17 @@ class StationListPage extends StatelessWidget {
           children: [Text('출발역')],
         ),
       ),
-      body: ListView(
-        children: [
-          Column(
-            children: [
-              SizedBox(
-                width: double.infinity,
-                child:Divider(color: Colors.red,thickness: 2,)),
-              ListTile(title: Text('수서')),
-              SizedBox(
-                width: double.infinity,
-                child:Divider(color: Colors.red,thickness: 2,)),    
-              ListTile(title: Text('동탄')),
-              SizedBox(
-                width: double.infinity,
-                child:Divider(color: Colors.red,thickness: 2,)),
-              ListTile(title: Text('평택지제')),
-              SizedBox(
-                width: double.infinity,
-                child:Divider(color: Colors.red,thickness: 2,)),
-              ListTile(title: Text('천안아산')),
-              SizedBox(
-                width: double.infinity,
-                child:Divider(color: Colors.red,thickness: 2,)),
-              ListTile(title: Text('오송')),
-              SizedBox(
-                width: double.infinity,
-                child:Divider(color: Colors.red,thickness: 2,)),
-              ListTile(title: Text('대전')),
-              SizedBox(
-                width: double.infinity,
-                child:Divider(color: Colors.red,thickness: 2,)),
-              ListTile(title: Text('김천구미')),
-              SizedBox(
-                width: double.infinity,
-                child:Divider(color: Colors.red,thickness: 2,)),
-              ListTile(title: Text('동대구')),
-              SizedBox(
-                width: double.infinity,
-                child:Divider(color: Colors.red,thickness: 2,)),
-              ListTile(title: Text('경주')),
-              SizedBox(
-                width: double.infinity,
-                child:Divider(color: Colors.red,thickness: 2,)),
-              ListTile(title: Text('울산')),
-              SizedBox(
-                width: double.infinity,
-                child:Divider(color: Colors.red,thickness: 2,)),
-            ],
-          ),
-        ],
-      ),
+      body: ListView.builder(itemCount: station.length ,itemBuilder: (context,index){
+        return ListTile(
+          title: Text(station[index]),
+          onTap: (){
+            Navigator.pop(context,station[index]);
+          },
+        );
+      }
+      )
+              
+      
     );
   }
 }
