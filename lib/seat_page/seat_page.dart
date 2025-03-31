@@ -15,6 +15,7 @@ class SeatPage extends StatelessWidget {
       body: Column(
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text('수서'),
               Icon(Icons.arrow_right_alt_rounded),
@@ -22,6 +23,7 @@ class SeatPage extends StatelessWidget {
             ],
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
                 child: Row(
@@ -36,6 +38,7 @@ class SeatPage extends StatelessWidget {
                   ],               
                 ),
               ),
+              SizedBox(width: 10),
               Container(
                 child: Row(
                   children: [
@@ -55,9 +58,9 @@ class SeatPage extends StatelessWidget {
               
             ],
           ),
-          Row(
-            children: [
-              Column(
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
                 children: [
               seat(),
               seat(),
@@ -78,8 +81,8 @@ class SeatPage extends StatelessWidget {
               seat(),
               seat(),
               seat(),
-              seat(),])
-            ],
+              seat(),]),
+            ),
           ),
           ElevatedButton(onPressed: () {}, child: Text('예매 하기'))
         ],
@@ -89,35 +92,43 @@ class SeatPage extends StatelessWidget {
 }
 
 Widget seat() {
-  return Row(
-    children: [
-      Container(
-        width: 50,
-        height: 50,
-        decoration: BoxDecoration(color: Colors.grey,
-        borderRadius: BorderRadius.circular(10)),
-      ),
-      Container(
-        width: 50,
-        height: 50,
-        decoration: BoxDecoration(color: Colors.grey,
-        borderRadius: BorderRadius.circular(10)),
-      ),
-      Container(
-        child: Text('1'),
-      ),
-      Container(
-        width: 50,
-        height: 50,
-        decoration: BoxDecoration(color: Colors.grey,
-        borderRadius: BorderRadius.circular(10)),
-      ),
-      Container(
-        width: 50,
-        height: 50,
-        decoration: BoxDecoration(color: Colors.grey,
-        borderRadius: BorderRadius.circular(10)),
-      ),
-    ],
+  return Padding(
+    padding: const EdgeInsets.all(5.0),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          width: 50,
+          height: 50,
+          decoration: BoxDecoration(color: Colors.grey,
+          borderRadius: BorderRadius.circular(10)),
+        ),
+        SizedBox(width: 5),
+        Container(
+          width: 50,
+          height: 50,
+          decoration: BoxDecoration(color: Colors.grey,
+          borderRadius: BorderRadius.circular(10)),
+        ),
+        Container(        
+          width: 50,
+          height: 50,
+          child: Center(child: Text('1')),
+        ),
+        Container(
+          width: 50,
+          height: 50,
+          decoration: BoxDecoration(color: Colors.grey,
+          borderRadius: BorderRadius.circular(10)),
+        ),
+        SizedBox(width: 5),
+        Container(
+          width: 50,
+          height: 50,
+          decoration: BoxDecoration(color: Colors.grey,
+          borderRadius: BorderRadius.circular(10)),
+        ),
+      ],
+    ),
   );
 }
