@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
 class SeatPage extends StatelessWidget {
+  String start;
+  String end;
+
+  SeatPage({required this.start,required this.end});
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,9 +23,9 @@ class SeatPage extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('수서'),
+              Text(start),
               Icon(Icons.arrow_right_alt_rounded),
-              Text('부산')
+              Text(end)
             ],
           ),
           Row(

@@ -106,7 +106,7 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               width:double.infinity,              
               child: ElevatedButton(onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>SeatPage()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>SeatPage(start:startStation, end: endStation)));
               }, child: Text('좌석 선택',style: TextStyle(
                 fontSize:15
               ),)))                  
