@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
                           GestureDetector(
                             onTap: () async {
                               String selectStation = await Navigator.push(context,
-                              MaterialPageRoute(builder: (context)=>StationListPage()));
+                              MaterialPageRoute(builder: (context)=>StationListPage(title:'출발역')));
 
                               if (selectStation !=null) {setState((){
                                 startStation=selectStation;
@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage> {
                           GestureDetector(
                             onTap: () async {
                               String selectEndStation = await Navigator.push(context,
-                              MaterialPageRoute(builder: (context)=>StationListPage()));
+                              MaterialPageRoute(builder: (context)=>StationListPage(title:'도착역')));
 
                               if (selectEndStation!=null) {setState(() {
                                 endStation=selectEndStation;
