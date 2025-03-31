@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_train_app/station_list_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -43,12 +44,19 @@ class HomePage extends StatelessWidget{
                         mainAxisAlignment: MainAxisAlignment.center,      
                         
                                        
-                        children: [                    
-                          Column(                          
+                        children: [     
+                          GestureDetector(
+                            onTap: (){Navigator.push(
+                              context, MaterialPageRoute(builder: (context)=> StationListPage() 
+                              ),
+                            );},
+                                         
+                          child: Column(                          
                             children: [
                               Text('출발역'),
                               Text('수서',style: TextStyle(fontSize: 30))                                         
                             ],                  
+                          ),
                           ),
                           Container(
                             height: 50,
