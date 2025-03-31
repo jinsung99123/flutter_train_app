@@ -11,10 +11,16 @@ class SeatPage extends StatefulWidget {
 }
 
 class _SeatPageState extends State<SeatPage> {
-  
-  
+  int? selectRow=2;
+  int? selectCol=3;
 
-
+  void onSelected(int row, int col) {
+    setState(() {
+      selectRow = row;
+    selectCol = col;
+    });
+  }
+     
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -130,27 +136,32 @@ class _SeatPageState extends State<SeatPage> {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
             children: [
-              seat(),
-              seat(),
+              seat(rowNum,1),
+              seat(rowNum,2),
               Expanded(child: Center(child: Text('$rowNum'))),
-              seat(),
-              seat(),
+              seat(rowNum,3),
+              seat(rowNum,4),
             ],
           ),
     );
   }
 
 
-Widget seat() {  
+Widget seat(int rowNum, int colNum) {  
   return Expanded(
     child: Padding(
       padding: const EdgeInsets.symmetric(horizontal: 2),
-      child: AspectRatio(
-        aspectRatio: 1,
-        child: Container(
-          
-          decoration: BoxDecoration(color: Colors.grey,
-          borderRadius: BorderRadius.circular(10)),
+      child: GestureDetector(
+        onTap: () {
+          onSelected(rowNum, colNum);
+        },
+        child: AspectRatio(
+          aspectRatio: 1,
+          child: Container(
+            
+            decoration: BoxDecoration(color: rowNum == selectRow && colNum == selectCol? Colors.purpleAccent : Colors.grey,
+            borderRadius: BorderRadius.circular(10)),
+          ),
         ),
       ),
     ),
