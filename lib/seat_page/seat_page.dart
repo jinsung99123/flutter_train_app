@@ -12,12 +12,12 @@ class SeatPage extends StatefulWidget {
 }
 
 class _SeatPageState extends State<SeatPage> {
-  int? selectRow=2;
-  int? selectCol=3;
+  int? selectRow;
+  int? selectCol;
 
   void onSelected(int row, int col) {
     setState(() {
-      selectRow = row;
+    selectRow = row;
     selectCol = col;
     });
   }
