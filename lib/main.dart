@@ -56,6 +56,7 @@ class _HomePageState extends State<HomePage> {
                 width:double.infinity,
                 height:180,
                 child: Card(
+                  color: const Color.fromARGB(255, 66, 70, 71),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -85,7 +86,7 @@ class _HomePageState extends State<HomePage> {
                           Container(
                             height: 50,
                             width: 150,
-                            child: VerticalDivider(color: Colors.red,thickness: 2),
+                            child: VerticalDivider(color: Theme.of(context).colorScheme.onBackground ,thickness: 2),
                           ),
                           
                           GestureDetector(
@@ -114,7 +115,14 @@ class _HomePageState extends State<HomePage> {
             SizedBox(height: 10),
             SizedBox(
               width:double.infinity,              
-              child: ElevatedButton(onPressed: (){
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.purpleAccent,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)
+                  )             
+                ),             
+                onPressed: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>SeatPage(start:startStation, end: endStation)));
               }, child: Text('좌석 선택',style: TextStyle(
                 fontSize:15
