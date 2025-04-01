@@ -61,49 +61,51 @@ class _HomePageState extends State<HomePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.center,      
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,      
                         
                                        
                         children: [     
-                          GestureDetector(
-                            onTap: () async {
-                              final selectStation = await Navigator.push(context,
-                              MaterialPageRoute(builder: (context)=>StationListPage(title:'출발역')));
-
-                              if (selectStation !=null) {setState((){
-                                startStation=selectStation;
-                              });}
-                            },
-                                         
-                          child: Column(                          
-                            children: [
-                              Text('출발역'),
-                              Text(startStation,style: TextStyle(fontSize: 30))                                         
-                            ],                  
-                          ),
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: () async {
+                                final selectStation = await Navigator.push(context,
+                                MaterialPageRoute(builder: (context)=>StationListPage(title:'출발역')));
+                            
+                                if (selectStation !=null) {setState((){
+                                  startStation=selectStation;
+                                });}
+                              },
+                                           
+                            child: Column(                          
+                              children: [
+                                Text('출발역'),
+                                Text(startStation,style: TextStyle(fontSize: 30))                                         
+                              ],                  
+                            ),
+                            ),
                           ),
 
                           Container(
                             height: 50,
-                            width: 150,
-                            child: VerticalDivider(color: Theme.of(context).colorScheme.onBackground ,thickness: 2),
-                          ),
+                            child: VerticalDivider(color: Theme.of(context).colorScheme.onBackground ,thickness: 2)),
                           
-                          GestureDetector(
-                            onTap: () async {
-                              final selectEndStation = await Navigator.push(context,
-                              MaterialPageRoute(builder: (context)=>StationListPage(title:'도착역')));
-
-                              if (selectEndStation!=null) {setState(() {
-                                endStation=selectEndStation;
-                              });}
-
-                            },
-                            child: Column(
-                              children: [
-                                Text('도착역'),
-                                Text(endStation,style: TextStyle(fontSize: 30),)                                         
-                              ],),
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: () async {
+                                final selectEndStation = await Navigator.push(context,
+                                MaterialPageRoute(builder: (context)=>StationListPage(title:'도착역')));
+                            
+                                if (selectEndStation!=null) {setState(() {
+                                  endStation=selectEndStation;
+                                });}
+                            
+                              },
+                              child: Column(
+                                children: [
+                                  Text('도착역'),
+                                  Text(endStation,style: TextStyle(fontSize: 30),)                                         
+                                ],),
+                            ),
                           ),
                         ],
                       ),
