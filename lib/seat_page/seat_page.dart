@@ -37,9 +37,9 @@ class _SeatPageState extends State<SeatPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(widget.start,style: TextStyle(fontSize: 30,color: Colors.purpleAccent)),
-                SizedBox(width: 60,),
+                SizedBox(width: 30,),
                 Icon(Icons.arrow_circle_right,size: 30,),
-                SizedBox(width: 60,),
+                SizedBox(width: 30,),
                 Text(widget.end,style: TextStyle(fontSize: 30,color: Colors.purpleAccent),)
               ],
             ),
@@ -166,7 +166,7 @@ class _SeatPageState extends State<SeatPage> {
                     borderRadius: BorderRadius.circular(10)
                   )
                 ),
-                onPressed: () {
+                onPressed: (selectRow !=null && selectCol !=null)?() {
                 showCupertinoDialog(context: context, builder: (context){
                   return CupertinoAlertDialog(
                     title: Text('예매 하시겠습니까?'),
@@ -185,7 +185,8 @@ class _SeatPageState extends State<SeatPage> {
                     ],
                   );
                 });
-              }, child: Text('예매 하기')),
+              }:null, child: Text('예매 하기')),
+              
               
             ),
           ),
