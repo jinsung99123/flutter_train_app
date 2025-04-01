@@ -20,10 +20,8 @@ class StationListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [Text(title)],
-        ),
+        centerTitle: true,
+        title: Text(title),
       ),
       body: Column(
         children: [

@@ -13,9 +13,9 @@ class SeatPage extends StatefulWidget {
 
 class _SeatPageState extends State<SeatPage> {
   int? selectRow;
-  int? selectCol;
+  String? selectCol;
 
-  void onSelected(int row, int col) {
+  void onSelected(int row, String col) {
     setState(() {
     selectRow = row;
     selectCol = col;
@@ -26,12 +26,8 @@ class _SeatPageState extends State<SeatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('좌석 선택')
-          ],
-        ),
+        centerTitle: true,
+        title: Text('좌석 선택'),
       ),
       body: Column(
         children: [
@@ -174,7 +170,7 @@ class _SeatPageState extends State<SeatPage> {
                 showCupertinoDialog(context: context, builder: (context){
                   return CupertinoAlertDialog(
                     title: Text('예매 하시겠습니까?'),
-                    content: Text('좌석: '),
+                    content: Text('좌석:$selectRow-$selectCol'),
                     actions: [
                       CupertinoDialogAction(
                         isDestructiveAction: true,
@@ -204,18 +200,18 @@ class _SeatPageState extends State<SeatPage> {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
             children: [
-              seat(rowNum,1),
-              seat(rowNum,2),
+              seat(rowNum,'A'),
+              seat(rowNum,'B'),
               Expanded(child: Center(child: Text('$rowNum'))),
-              seat(rowNum,3),
-              seat(rowNum,4),
+              seat(rowNum,'C'),
+              seat(rowNum,'D'),
             ],
           ),
     );
   }
 
 
-Widget seat(int rowNum, int colNum) {  
+Widget seat(int rowNum, String colNum) {  
   return Expanded(
     child: Padding(
       padding: const EdgeInsets.symmetric(horizontal: 2),
