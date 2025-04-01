@@ -122,9 +122,9 @@ class _HomePageState extends State<HomePage> {
                     borderRadius: BorderRadius.circular(10)
                   )             
                 ),             
-                onPressed: (){
+                onPressed: (startStation !='선택' && endStation !='선택')?(){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>SeatPage(start:startStation, end: endStation)));
-              }, child: Text('좌석 선택',style: TextStyle(
+              }: null, child: Text('좌석 선택',style: TextStyle(
                 fontSize:15
               ),)))                  
           ]
