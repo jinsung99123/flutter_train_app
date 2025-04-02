@@ -19,10 +19,7 @@ class StationListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(title),
-      ),
+      appBar: AppBar(centerTitle: true, title: Text(title)),
       body: Column(
         children: [
           Expanded(
@@ -37,8 +34,10 @@ class StationListPage extends StatelessWidget {
                         Navigator.pop(context, station[index]);
                       },
                     ),
-                    Divider(color: Theme.of(context).colorScheme.outline,
-                    thickness:  1,)
+                    Divider(
+                      color: Theme.of(context).colorScheme.outline,
+                      thickness: 1,
+                    ),
                   ],
                 );
               },
