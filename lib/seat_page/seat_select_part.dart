@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class SeatSelectPart extends StatefulWidget {
-  final Function(int, String) onSeatSelected;
+  final Function(int, String) onSeatSelected;                           // 좌석 선택시 호출될 콜백 함수
   final int? selectedRow;
-  final String? selectedCol;
+  final String? selectedCol;                                            // 선택된 좌석의 행/열 번호
 
-  const SeatSelectPart({
+  const SeatSelectPart({                                                // 생성자
     Key? key,
     required this.onSeatSelected,
     required this.selectedRow,
@@ -17,7 +17,7 @@ class SeatSelectPart extends StatefulWidget {
 }
 
 class _SeatSelectPartState extends State<SeatSelectPart> {
-  Widget seatrow(int rowNum) {
+  Widget seatrow(int rowNum) {                                          // 한 행 세트의 좌석을 생성하는 위젯
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
@@ -32,7 +32,7 @@ class _SeatSelectPartState extends State<SeatSelectPart> {
     );
   }
 
-  Widget seat(int rowNum, String colNum) {
+  Widget seat(int rowNum, String colNum) {                              // 해당 행의 개별 좌석을 생성하는 위젯
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 2),
@@ -45,7 +45,7 @@ class _SeatSelectPartState extends State<SeatSelectPart> {
             child: Container(
               decoration: BoxDecoration(
                 color:
-                    rowNum == widget.selectedRow && colNum == widget.selectedCol
+                    rowNum == widget.selectedRow && colNum == widget.selectedCol       // 삼항 연산자를 통해 행,열이 선택되었을시 버튼 색깔 활성화
                         ? Colors.purpleAccent
                         : Colors.grey,
                 borderRadius: BorderRadius.circular(10),
@@ -58,7 +58,7 @@ class _SeatSelectPartState extends State<SeatSelectPart> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {                                  // 좌석 모듬을 생성하는 위젯
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 50),

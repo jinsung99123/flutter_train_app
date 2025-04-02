@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class SeatTopPart extends StatelessWidget {
-  final String start;
+  final String start;                                       // 출발역 도착역을 받을 변수
   final String end;
 
-  const SeatTopPart({
+  const SeatTopPart({                                       // 생성자
     required this.start,
     required this.end,
     Key? key,
@@ -22,14 +22,14 @@ class SeatTopPart extends StatelessWidget {
             children: [
               Text(
                 start,
-                style: TextStyle(fontSize: 30, color: Colors.purpleAccent),
+                style: TextStyle(fontSize: 30, color: Colors.purpleAccent),          // 전달 받은 start(출발역)를 표시
               ),
               SizedBox(width: 30),
               Icon(Icons.arrow_circle_right, size: 30),
               SizedBox(width: 30),
               Text(
                 end,
-                style: TextStyle(fontSize: 30, color: Colors.purpleAccent),
+                style: TextStyle(fontSize: 30, color: Colors.purpleAccent),          // 전달 받은 end(도착역)을 표시
               ),
             ],
           ),

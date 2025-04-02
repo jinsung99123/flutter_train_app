@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.dark,                                                        // 테마 설정(다크모드)
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.purpleAccent,
         brightness: Brightness.light)
@@ -32,7 +32,7 @@ class HomePage extends StatefulWidget{
 }
 
 class _HomePageState extends State<HomePage> {
-  String startStation = '선택';
+  String startStation = '선택';                                                          // 출발역, 도착역 초기값 설정
   String endStation='선택';
 
 
@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
                                        
                         children: [     
                           Expanded(
-                            child: GestureDetector(
+                            child: GestureDetector(                                  // 제스터 디텍터로 정류장 리스트 페이지 이동 후 setState를 통해 정류장 리스트 페이지에서 전달 받은 값을 출발역으로 적용
                               onTap: () async {
                                 final selectStation = await Navigator.push(context,
                                 MaterialPageRoute(builder: (context)=>StationListPage(title:'출발역')));
@@ -90,7 +90,7 @@ class _HomePageState extends State<HomePage> {
                             child: VerticalDivider(color: Theme.of(context).colorScheme.onBackground ,thickness: 2)),
                           
                           Expanded(
-                            child: GestureDetector(
+                            child: GestureDetector(                                   // 제스터 디텍터로 정류장 리스트 페이지 이동 후 setState를 통해 정류장 리스트 페이지에서 전달 받은 값을 도착역으로 적용
                               onTap: () async {
                                 final selectEndStation = await Navigator.push(context,
                                 MaterialPageRoute(builder: (context)=>StationListPage(title:'도착역')));
@@ -115,7 +115,7 @@ class _HomePageState extends State<HomePage> {
               
             ),  
             SizedBox(height: 10),
-            SizedBox(
+            SizedBox(                                                                                     // 예매하기 버튼 위젯 생성
               width:double.infinity,              
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -124,7 +124,7 @@ class _HomePageState extends State<HomePage> {
                     borderRadius: BorderRadius.circular(10)
                   )             
                 ),             
-                onPressed: (startStation !='선택' && endStation !='선택')?(){
+                onPressed: (startStation !='선택' && endStation !='선택')?(){                             // 삼항 연산자를 통해 정류장이 모두 선택되었을 시 버튼 활성화
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>SeatPage(start:startStation, end: endStation)));
               }: null, child: Text('좌석 선택',style: TextStyle(
                 fontSize:15
